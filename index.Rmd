@@ -1,0 +1,212 @@
+---
+title: "Detección de anomalías en distritos electorales:"
+
+subtitle: "Primera y Tercera Sección Electoral de PBA en GENERALES 2023"  
+
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+ # fig.width=9, fig.height=3.5,
+  #fig.retina=3,
+ # out.width = "100%",
+  cache = FALSE,
+  echo = TRUE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+```
+
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+library(xaringanExtra)
+style_duo_accent(
+  primary_color = "#266098",
+  secondary_color = "#c7c7c7",
+  inverse_header_color = "#001f3d",
+    header_font_google = google_font("Roboto"),
+  text_font_google   = google_font("Montserrat", "300", "300i"),
+  code_font_google   = google_font("Fira Mono"),
+  link_color = "#070a4a",  
+    link_decoration = "none"
+)
+```
+
+
+class: center middle
+
+## El Fraude Electoral estuvo en la conversación pública
+
+
+<img src="https://github.com/guadag12/anomaly-detection-ASACOP/raw/main/plots/fraude.jpg" width="80%" />
+
+ 
+400% creció la conversación en RRSS entre el 22 y el 31 de octubre según [@AdHoc](https://twitter.com/AdHocOK/status/1720086741699510412/photo/1)
+
+
+---
+
+class: center middle
+
+.pull-left[
+.center[
+
+<img src="https://github.com/guadag12/anomaly-detection-ASACOP/raw/main/plots/p_2.png" width="750px" />
+
+[Link a tweet](https://twitter.com/canalladfc/status/1717601695058866464)
+]
+]
+
+
+.pull-right[
+.center[
+<img src="https://github.com/guadag12/anomaly-detection-ASACOP/raw/main/plots/brandbird%20(1).jpg" width="450px" />
+
+[Link a tweet](https://twitter.com/betoElCan/status/1726622189011808718)
+]
+]
+
+---
+
+
+## Qué es lo que se puede medir con datos? (sin saber mucho de estadística)
+
+
+
+- Tasa de participación mayor al 100%. La cantidad de electores no coincida con la cantidad de votos
+
+
+- Diferencia atípica entre el voto de las agrupaciones por mesa y el promedio del circuito electoral
+
+
+- Si la participación y el voto de alguna agrupación política supera el 90% 
+
+
+- Gran cantidad de mesas sin cargar
+
+
+---
+
+class: center middle
+
+
+## Ley de Benford
+
+
+```{r, out.width = "600px", echo = FALSE}
+knitr::include_graphics("https://github.com/guadag12/anomaly-detection-ASACOP/raw/main/plots/benford.png")
+```
+
+
+
+
+---
+
+class: center 
+
+
+## Cómo detectar anomalías?
+
+<img src="https://github.com/guadag12/anomaly-detection-ASACOP/raw/main/plots/cita_book.PNG" width="400px" />
+
+
+
+---
+
+class: center 
+
+
+# Qué tipo de anomalias medimos?
+
+1. **Ballot Box Stuffing:** Uno de los partidos ingresa más boletas para sí o infla la cantidad de votos final a su favor. Por ejemplo, introducir ilegalmente boletas.
+
+2. **Vote Stealing** (robo de votos): Un partido le roba a otro votos, es decir, hay una transferencia de los votos hacia otro partido. En este caso los votos ya han sido emitidos por los votantes
+
+
+---
+
+class: center middle
+
+
+# Qué vamos a usar para medirlo?
+
+<img src="https://github.com/guadag12/anomaly-detection-ASACOP/raw/main/plots/database.PNG" width="80%" />
+
+[https://datos.gob.ar/dataset/dine-resultados-provisionales-elecciones-2023](https://datos.gob.ar/dataset/dine-resultados-provisionales-elecciones-2023)
+
+
+---
+
+class: center middle
+
+
+## ¿Cómo esta conformado nuestro sample?
+
+
+<img src="https://github.com/guadag12/anomaly-detection-ASACOP/raw/main/plots/split_data_process.png" width="90%" />
+
+
+
+---
+
+class: center 
+
+
+## Qué es un Modelo Random Forest ?
+
+
+<img src="https://github.com/guadag12/anomaly-detection-ASACOP/raw/main/plots/random_forest.png" width="50%" />
+
+
+---
+
+class: center 
+
+
+## Cómo se aplica en nuestro caso?
+
+
+<img src="https://github.com/guadag12/anomaly-detection-ASACOP/raw/main/plots/alvarez_decision_tree.PNG" width="70%" />
+
+---
+
+class: center middle
+
+
+<img src="https://github.com/guadag12/anomaly-detection-ASACOP/raw/main/plots/map_elections.png" width="90%" />
+
+
+---
+
+class: center middle
+
+
+<img src="https://github.com/guadag12/anomaly-detection-ASACOP/raw/main/plots/mesas_adulteradas_nbi.png" width="100%" />
+
+
+---
+
+class: inverse, middle, center
+
+# Preguntas? Dudas? 🤓 
+</br>
+
+## Pueden escribirme: 👇
+
+[`r fontawesome::fa("twitter")` @guadag12](https://twitter.com/guadag12)
+</br>
+[`r fontawesome::fa("github")` @guadag12](http://github.com/guadag12) 
+</br>
+[`r fontawesome::fa("paper-plane")` guadagonz12@gmail.com](guadagonz12@gmail.com)
